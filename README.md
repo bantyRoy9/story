@@ -1,4 +1,4 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli), customized to implement a **modern blog-style UI** with drawers, cards, icons, and content sections.
 
 # Getting Started
 
@@ -6,9 +6,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 ## Step 1: Start Metro
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
+Metro is the JavaScript bundler used by React Native. To start it:
 
 ```sh
 # Using npm
@@ -18,80 +16,117 @@ npm start
 yarn start
 ```
 
-## Step 2: Build and run your app
+## Step 2: Build and Run Your App
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Open a new terminal window and run the app on your platform:
 
 ### Android
 
 ```sh
-# Using npm
 npm run android
-
-# OR using Yarn
+# or
 yarn android
 ```
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+Install CocoaPods dependencies first:
 
 ```sh
+cd ios
 bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
 bundle exec pod install
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Then run:
 
 ```sh
-# Using npm
 npm run ios
-
-# OR using Yarn
+# or
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+> 💡 You can also open the iOS project in Xcode and run directly.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## Step 3: Explore the App Structure
 
-## Step 3: Modify your app
+This project includes:
 
-Now that you have successfully run the app, let's make changes!
+### 🫟 Navigation
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+* `@react-navigation/native`, `@react-navigation/drawer` for nested left and right drawers
+* Custom `Header` component that uses `SafeAreaView` to respect the status bar on iOS
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### 🎨 UI Components
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+* **FeaturedPostCard** with overlay icons, meta info, category & date
+* **Featured Slider** section with carousel
+* **Travel Tips**, **Most Popular**, **Last Comments** sections
 
-## Congratulations! :tada:
+### 🎯 Icons
 
-You've successfully run and modified your React Native App. :partying_face:
+* Icons implemented with [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) or emoji placeholders (can be replaced)
 
-### Now what?
+### 📦 Folder Structure (recommended)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```
+src/
+├── components/
+│   ├── Header.tsx
+│   ├── FeaturedPostCard.tsx
+│   ├── TravelTipsSection.tsx
+│   ├── PopularPostsSection.tsx
+│   └── CommentsSection.tsx
+├── navigation/
+│   └── DrawerNavigator.tsx
+├── screens/
+│   └── HomeScreen.tsx
+└── assets/
+    └── images/
+```
 
-# Troubleshooting
+## Step 4: Modify and Extend
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Edit `src/components/` to customize UI components.
 
-# Learn More
+## Reloading Tips
 
-To learn more about React Native, take a look at the following resources:
+* **Android**: Press `R` twice or use `Cmd+M`
+* **iOS**: Press `Cmd+R` in the simulator
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Troubleshooting
+
+If issues arise:
+
+* Run `npx react-native doctor`
+* Delete build caches: `cd android && ./gradlew clean`
+* Clear Metro cache: `npx react-native start --reset-cache`
+
+## Resources
+
+* [React Native Docs](https://reactnative.dev/docs/getting-started)
+* [React Navigation Docs](https://reactnavigation.org/docs/getting-started/)
+* [Vector Icons](https://github.com/oblador/react-native-vector-icons)
+* [Expo Asset Management](https://docs.expo.dev/guides/assets/)
+
+## 🚀 Features Implemented
+
+* ✅ Safe-area aware Header with Buy Now button
+* ✅ Left and Right Drawer Navigation
+* ✅ Featured section with overlay + slider
+* ✅ Travel tips and category card list
+* ✅ Most popular section
+* ✅ Last comments with avatars
+* ✅ Word-format README generation
+
+---
+
+## ✅ Next Steps
+
+* Add API integration for dynamic content
+* Implement dark mode
+* Improve accessibility and animations
+
+> 🎉 You now have a fully responsive blog-style React Native app that mirrors a modern web design, built with modular components and scalable layout.
+
+Happy coding! 💻✨
